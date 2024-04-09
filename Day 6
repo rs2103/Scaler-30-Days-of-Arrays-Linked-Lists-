@@ -1,0 +1,42 @@
+Kth Row of Pascal's Triangle
+Problem Description
+
+Given an index k, return the kth row of the Pascal's triangle.
+Pascal's triangle: To generate A[C] in row R, sum up A'[C] and A'[C-1] from previous row R - 1.
+
+Example: ``` Input : k = 3
+
+Return : [1,3,3,1] ``` Note: k is 0 based. k = 0, corresponds to the row [1].
+
+Note: Could you optimize your algorithm to use only O(k) extra space?
+
+
+User Code
+
+ public class Solution {
+    public int[] getRow(int A){
+        int arr[] = new int [A+1];
+        arr[0] =1;
+        for(int i=1;i<=A;i++){
+            for(int k=i;k>0;k--){
+                arr[k]+= arr[k-1];
+            }
+        }
+        return arr;
+    }
+    // public ArrayList<Integer> getRow(int A) {
+    //     ArrayList<Integer> row = new ArrayList<>();
+    //     row.add(1);
+    //     if(A==0){
+    //         return row;
+    //     }
+    //     ArrayList<Integer> prev = getRow(A -1);
+    //     for(int i=1;i<prev.size();i++){
+    //         int r = prev.get(i-1) + prev.get(i);
+    //         row.add(r);
+    //     }
+    //     row.add(1);
+    //     return row;
+        
+    // }
+}
